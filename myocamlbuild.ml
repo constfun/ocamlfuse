@@ -7,6 +7,7 @@ let ocamlfuse_lib = Project.lib project_name
   ~dir:"lib"
   ~style: (`Basic)
   ~thread:()
+  ~ccopt:"-I/Users/nick/.opam/test2/lib/camlidl -I/Users/nick/projects/ocamlfuse/lib"
   ~findlib_deps:["unix"; "threads"; "bigarray"; "camlidl"]
   ~pkg:project_name
 
