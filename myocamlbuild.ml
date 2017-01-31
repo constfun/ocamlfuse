@@ -5,7 +5,7 @@ let version = "2.8.0" (* version bump? *)
 
 let ocamlfuse_lib = Project.lib project_name
   ~dir:"lib"
-  ~style: (`Pack project_name)
+  ~style: (`Basic)
   ~thread:()
   ~findlib_deps:["unix"; "threads"; "bigarray"; "camlidl"]
   ~pkg:project_name
