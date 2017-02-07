@@ -6,11 +6,9 @@ homepage: "http://sourceforge.net/apps/mediawiki/ocamlfuse"
 dev-repo: "https://github.com/astrada/ocamlfuse.git"
 bug-reports: "https://github.com/astrada/ocamlfuse/issues"
 build: [
-  ["make"]
-]
-install: ["make" "install"]
-remove: [
-  ["ocamlfind" "remove" "Fuse"]
+  [make]
+  [make "_build/META"]
+  [make "%{name}%.install"]
 ]
 depends: [
   "base-bigarray"
