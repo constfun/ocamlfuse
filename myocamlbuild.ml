@@ -13,10 +13,9 @@ let ocamlfuse_lib = Build.lib
 let ocamlfuse_lib = Project.lib project_name
     ~dir:"lib"
     ~style:`Basic
-    ~thread:()
     ~cclib:"-lcamlidl"
     ~findlib_deps:["unix"; "threads"; "bigarray"; "camlidl"]
-    ~linkall:()
+    ~thread:()
     ~verbose:()
     ~pkg:project_name
 
