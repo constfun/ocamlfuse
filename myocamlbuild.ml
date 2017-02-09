@@ -54,22 +54,67 @@ let ocamlfuse_lib = Project.lib project_name
     ~dir:"lib"
     ~style:`Basic
     ~link_style:`Noautolink|`Dynamic|`Static|`Auto|`Manual (* for -std lib, and standard packages *)
-    ~link: (* `Auto is default *) [
-      (* normally autolinked *)
-      `Pkg "std";
+    ~included_clibs: ["camlidl"]
+    ~link: (function l ->
+
+             let open Link.Lib in
+
+             (* simply builds ocamlc and ocamlmklib flags *)
+
+             pkg l "unix";
+             pkg l "unix";
+             pkg l "unix";
+             pkg l "unix";
+
+             autolink_cclib "ocamlfuse";
+             autolink_dllib "ocamlfuse";
+
+             include_clib l "camlidl";
+
+             reference_clib l "fuse";
+             (* will call autolink_cclib *)
+
+             autolink_cclib
+             autolink_ccopt
+             autolink_dllib
+
+
+             l.inspect ();
+
+
+
+             lin
+             include_clib l "camlidl";
+             iter l
+           )
+
+    ~link: `Manual [
+      (*`Pkg "std";*)
       `Pkg "unix";
       `Pkg "threads";
       `Pkg "bigarray";
       `Pkg "camlidl";
+
+      (*`Autolink "ocamlfuse"*)
       (**)
 
-      `AutolinkDynamic project_name;
-      `AutolinkStatic project_name;
-      (**)
+      `IncludeClib "camlidl"; (* link with this lib right now, both resulting .so and .a will have the symbols included *)
+      `ReferenceClib "fuse"; (* have .so refence lib, and have lib autolinked to ship a working .a *)
+      `AutolinkCclib "fuse";
+
+      (* just IncludeClib and AutolinkClib? *)
+      (* just IncludeClib and ReferenceClib *)
+
+      (* just StaticClib and DynamicClib *)
+      (* Static, StaticAutolink, DynamicAutolink, Dynamic *)
 
 
-      `DynlinkWithClib "fuse"; (* link with .dylib file when running gcc -shared *)
-      `IncludeClib "camlidl"; (* link in libcamlidl.a into stubs immediately *)
+
+      (* DynamicClib? *)
+      `ReferenceClib "fuse"; (* link with .dylib file when running gcc -shared *)
+
+      (* StaticClib? *)
+      `IncludeClib "camlidl"; (* link in libcamlidl.a into both dynamic and static stubs immediately *)
     ]
 
 
