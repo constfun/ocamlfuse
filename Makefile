@@ -22,7 +22,7 @@ include $(shell opam config var solvuu-build:lib)/solvuu.mk
 # OR
 #
 #
-# ocamlfind ocamlmklib -o ocamlfuse -verbose -lfuse -lcamlidl -L/Users/nick/.opam/4.04.0/lib/ lib/Fuse_bindings_stubs.o lib/Fuse_util.o lib/Unix_util_stubs.o lib/Result.cmo lib/Fuse_bindings.cmo lib/Thread_pool.cmo lib/Fuse_lib.cmo lib/Unix_util.cmo lib/Fuse.cmo
+# ocamlfind ocamlmklib -o ocamlfuse -verbose -lfuse -lcamlidl -L/Users/nick/.opam/4.04.0/lib/camlidl lib/Fuse_bindings_stubs.o lib/Fuse_util.o lib/Unix_util_stubs.o lib/Result.cmo lib/Fuse_bindings.cmo lib/Thread_pool.cmo lib/Fuse_lib.cmo lib/Unix_util.cmo lib/Fuse.cmo
 #
 #
 #
