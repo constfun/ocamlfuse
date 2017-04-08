@@ -1,5 +1,5 @@
-open Solvuu_build.Std
-open Util
+open Solvuu_build.Std.Build
+(* open Util *)
 
 let project_name = "ocamlfuse"
 let version = "2.8.0" (* version bump? *)
@@ -7,8 +7,8 @@ let version = "2.8.0" (* version bump? *)
 
 
 
+let () = Build_ocaml.lib "lib"
 
-let () = Build.lib ~dir:"lib"
 
   (* if ml = mli then print_endline "equal" *)
   (* else print_endline "not equal"; *)
